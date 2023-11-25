@@ -25,6 +25,11 @@ const night = {
     light: '10, 10, 20',
 };
 
+// Select the elements
+const dataListImage = document.getElementById('data-list-image');
+
+const dataListButton = document.getElementById('dataListButton');
+
 // Function to create a preview element
 function createPreviewElement({ author, id, image, title }) {
     const preview = document.createElement('button');
@@ -59,7 +64,7 @@ const extracted = books.slice(0, 36);
 
 // Loop through extracted books and create preview elements
 for (const { author, image, title, id } of extracted) {
-    const preview = createPreview({
+    const preview = createPreviewElement({
         author,
         id,
         image,
@@ -121,17 +126,16 @@ document.documentElement.style.setProperty('--color-dark', css[theme].dark);
 document.documentElement.style.setProperty('--color-light', css[theme].light);
 
 
-// Set the 'data-list-button' text
-data-list-button.textContent = `Show more (${Math.max(matches.length - page * BOOKS_PER_PAGE, 0)})`;
+// Set the 'dataListButton' text
+document.getElementById('dataListButton').disabled = !(Math.max(matches.length - page * BOOKS_PER_PAGE, 0) > 0);
+document.getElementById('dataListButton').innerHTML = `<span>Show more</span><span class="list__remaining"> (${Math.max(matches.length - page * BOOKS_PER_PAGE, 0)})</span>`;
 
-// Set the 'src' attribute of 'data-list-image'
-data-list-image.src = matches[0].image;
 
 // Set the 'disabled' property based on the availability of more books
-data-list-button.disabled = !(Math.max(matches.length - page * BOOKS_PER_PAGE, 0) > 0);
+dataListButton.disabled = !(Math.max(matches.length - page * BOOKS_PER_PAGE, 0) > 0);
 
-// Set the 'innerHTML' of 'data-list-button' with dynamic content
-data-list-button.innerHTML = `<span>Show more</span><span class="list__remaining"> (${Math.max(matches.length - page * BOOKS_PER_PAGE, 0)})</span>`;
+// Set the 'innerHTML' of 'dataListButton' with dynamic content
+dataListButton.innerHTML = `<span>Show more</span><span class="list__remaining"> (${Math.max(matches.length - page * BOOKS_PER_PAGE, 0)})</span>`;
 
 // Click event for canceling search overlay if it is open
 data-search-cancel.addEventListener('click', () => { data-search-overlay.open = false; });
@@ -147,7 +151,7 @@ data-settings-form.addEventListener('submit', (event) => { actions.settings.subm
 data-list-close.addEventListener('click', () => { data-list-active.open = false; });
 
 // Click event for loading more books and updating the remaining count
-data-list-button.addEventListener('click', () => {
+dataListButton.addEventListener('click', () => {
     const previewsFragment = document.createDocumentFragment();
     appendPreviewsToFragment(previewsFragment, matches.slice(page * BOOKS_PER_PAGE, (page + 1) * BOOKS_PER_PAGE));
     data-list-items.appendChild(previewsFragment);
@@ -156,18 +160,25 @@ data-list-button.addEventListener('click', () => {
     updateListButton();
 });
 
-    // Set the 'data-list-button' text
-    data-list-button.textContent = `Show more (${Math.max(matches.length - page * BOOKS_PER_PAGE, 0)})`;
+    // Set the 'dataListButton' text
+    dataListButton.textContent = `Show more (${Math.max(matches.length - page * BOOKS_PER_PAGE, 0)})`;
+
+
     // Set the 'disabled' property based on the availability of more books
-    data-list-button.disabled = !(Math.max(matches.length - page * BOOKS_PER_PAGE, 0) > 0);
-    // Set the 'innerHTML' of 'data-list-button' with dynamic content
-    data-list-button.innerHTML = `<span>Show more</span><span class="list__remaining"> (${Math.max(matches.length - page * BOOKS_PER_PAGE, 0)})</span>`;
+    dataListButton.disabled = !(Math.max(matches.length - page * BOOKS_PER_PAGE, 0) > 0);
+
+
+    // Set the 'src' attribute of 'data-list-image'
+    dataListImage.src = matches[0].image;
+
+    // Set the 'innerHTML' of 'dataListButton' with dynamic content
+    dataListButton.innerHTML = `<span>Show more</span><span class="list__remaining"> (${Math.max(matches.length - page * BOOKS_PER_PAGE, 0)})</span>`;
 
     // Function to update list button
 function updateListButton() {
     const remaining = Math.max(matches.length - page * BOOKS_PER_PAGE, 0);
-    data-list-button.disabled = remaining === 0;
-    data-list-button.innerHTML = `<span>Show more</span><span class="list__remaining"> (${remaining})</span>`;
+    dataListButton.disabled = remaining === 0;
+    dataListButton.innerHTML = `<span>Show more</span><span class="list__remaining"> (${remaining})</span>`;
 }
 
 // Click event for opening the search overlay and focusing on the title input
@@ -184,7 +195,7 @@ data-search-form.addEventListener('submit', (event) => {
     const result = [];
 
     // Loop through booksList and filter based on title, author, and genre
-    for (const book of booksList) {
+    for (const book of matches) {
         const titleMatch = filters.title.trim() === '' && book.title.toLowerCase().includes(filters.title.toLowerCase());
         const authorMatch = filters.author === 'any' || book.author === filters.author;
         let genreMatch = filters.genre === 'any';
@@ -237,9 +248,9 @@ data-search-form.addEventListener('submit', (event) => {
     const initial = matches.length - page * BOOKS_PER_PAGE;
     const remaining = Math.max(initial, 0);
 
-    data-list-button.disabled = remaining === 0;
+    dataListButton.disabled = remaining === 0;
 
-    data-list-button.innerHTML = `<span>Show more</span><span class="list__remaining"> (${remaining})</span>`;
+    dataListButton.innerHTML = `<span>Show more</span><span class="list__remaining"> (${remaining})</span>`;
 
     // Scroll to the top and close the search overlay
     window.scrollTo({ top: 0, behavior: 'smooth' });
