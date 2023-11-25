@@ -61,15 +61,6 @@ function appendPreviewsToFragment(fragment, books) {
     }
 }
 
-/**
- * Updates the 'Show more' button based on the number of remaining books.
- */
-function updateListButton() {
-    const remaining = Math.max(matches.length - page * BOOKS_PER_PAGE, 0);
-    dataListButton.disabled = remaining === 0;
-    dataListButton.innerHTML = `<span>Show more</span><span class="list__remaining"> (${remaining})</span>`;
-  }
-
   // Event listener for 'Show more' button
 dataListButton.addEventListener('click', () => {
     const previewsFragment = document.createDocumentFragment();
@@ -82,47 +73,37 @@ dataListButton.addEventListener('click', () => {
     updateListButton();
   });
 
-  // Event listener for search form
+// Event listener for search form
 dataSearchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const filters = Object.fromEntries(formData);
-    const result = [];
-  
-    for (const book of books) {
+    const result = books.filter(book => {
         const titleMatch = filters.title.trim() === '' || book.title.toLowerCase().includes(filters.title.toLowerCase());
         const authorMatch = filters.author === 'any' || book.author === filters.author;
         const genreMatch = filters.genre === 'any' || book.genres.includes(filters.genre);
-  
-        if (titleMatch && authorMatch && genreMatch) {
-            result.push(book);
-        }
-    }
+        return titleMatch && authorMatch && genreMatch;
+    });
 
-    if (result.length < 1) {
-        dataListMessage.classList.add('list__message_show');
-    } else {
-        dataListMessage.classList.remove('list__message_show');
-    }
-  
+    dataListMessage.classList.toggle('list__message_show', result.length < 1);
     dataListItems.innerHTML = '';
     const extracted = result.slice(range[0], range[1]);
-  
+
     const fragment = document.createDocumentFragment();
-    for (const { author, image, title, id } of extracted) {
+    for (const { author, id, image, title } of extracted) {
         const element = createPreviewElement({ author, id, image, title });
         fragment.appendChild(element);
     }
-  
+
     dataListItems.appendChild(fragment);
     const initial = Math.max(matches.length - page * BOOKS_PER_PAGE, 0);
     dataListButton.disabled = initial === 0;
-  
+
     dataListButton.innerHTML = `<span>Show more</span><span class="list__remaining"> (${initial})</span>`;
-  
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
     dataSearchOverlay.open = false;
-  });
+});
 
 
 // Set the theme based on user preference
@@ -154,7 +135,7 @@ data-list-button.addEventListener('click', () => {
 
 // Add event listener for data-header-search click
 data-header-search.addEventListener('click', function() {
-    data-search-overlay.open !== true;
+    data-search-overlay.open = true;
     data-search-title.focus();
 });
 
