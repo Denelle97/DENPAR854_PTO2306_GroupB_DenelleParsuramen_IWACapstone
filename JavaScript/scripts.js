@@ -1,5 +1,5 @@
 //Import data
-import { BOOKS_PER_PAGE, authors, genres, books } from "./data.js";
+import { BOOKS_PER_PAGE, authors, genres, books } from "../JavaScript/data.js";
 
 // Create a document fragment
 const fragment = document.createDocumentFragment();
