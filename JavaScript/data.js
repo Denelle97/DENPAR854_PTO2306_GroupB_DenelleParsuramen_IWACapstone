@@ -167,7 +167,7 @@ export const genres = {
 };
 
 /** An array of books with nested arrays containing the books' details */
-export const Book = [
+export const books = [
   {
     // Unique identifier for the book
     id: "760b3450-9c86-42d0-8eff-e793bf823756",
@@ -27413,3 +27413,21 @@ export const Book = [
     author: "8e7083f4-7613-4872-a21b-62fbe33fe180",
   },
 ];
+
+// Created a Set to store unique titles and remove duplicates
+const uniqueTitles = new Set();
+
+// Use filter to keep only the books with unique titles
+const uniqueBooks = books.filter((book) => {
+  // Check if the title is not in the Set
+  if (!uniqueTitles.has(book.title)) {
+    // If not, add it to the Set and return true to include this book in the result
+    uniqueTitles.add(book.title);
+    return true;
+  }
+  // If the title is already in the Set, return false to exclude this book from the result
+  return false;
+});
+
+//uniqueBooks contains the array of books with unique titles
+export const books = uniqueBooks;
