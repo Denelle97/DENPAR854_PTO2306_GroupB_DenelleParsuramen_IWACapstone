@@ -27,7 +27,11 @@ if (!range || range.length < 2) {
     throw new Error('Range must be an array with two numbers');
 }
 
-// Function to create a preview element
+/**
+ * Creates a preview element for a book.
+ * @param {Object} book - The book object.
+ * @returns {HTMLButtonElement} - The created preview element.
+ */
 function createPreviewElement({ author, id, image, title }) {
     const preview = document.createElement('button');
     preview.classList = 'preview';
@@ -44,7 +48,12 @@ function createPreviewElement({ author, id, image, title }) {
     return preview;
 }
 
-// Function to append previews to the fragment
+
+/**
+ * Appends book previews to a document fragment.
+ * @param {DocumentFragment} fragment - The target fragment.
+ * @param {Object[]} books - Array of books to create previews for.
+ */
 function appendPreviewsToFragment(fragment, books) {
     for (const book of books) {
         const preview = createPreviewElement(book);
@@ -52,7 +61,9 @@ function appendPreviewsToFragment(fragment, books) {
     }
 }
 
-// Function to update the 'Show more' button
+/**
+ * Updates the 'Show more' button based on the number of remaining books.
+ */
 function updateListButton() {
     const remaining = Math.max(matches.length - page * BOOKS_PER_PAGE, 0);
     dataListButton.disabled = remaining === 0;
@@ -124,8 +135,8 @@ updateListButton();
 
 
 // Update the data-list-button
-data-list-button.disabled = !(matches.length - page * BOOKS_PER_PAGE > 0);
-data-list-button.innerHTML = `<span>Show more</span><span class="list__remaining"> (${Math.max(matches.length - page * BOOKS_PER_PAGE, 0)})</span>`;
+data-list-button.textContent == `Show more (${books.length - BOOKS_PER_PAGE})`; 
+data-list-button.disabled ==!(matches.length - [page * BOOKS_PER_PAGE] > 0);
 
 // Add event listener for data-list-button click
 data-list-button.addEventListener('click', () => {
@@ -142,8 +153,8 @@ data-list-button.addEventListener('click', () => {
 });
 
 // Add event listener for data-header-search click
-data-header-search.addEventListener('click', () => {
-    data-search-overlay.open = true;
+data-header-search.addEventListener('click', function() {
+    data-search-overlay.open !== true;
     data-search-title.focus();
 });
 
@@ -232,7 +243,7 @@ data-list-items.addEventListener('click', (event) => {
     // Handle the click on list items
     let active;
 
-    // Traverse the event path
+    // Traverse(move back and forth) the event path
     const pathArray = Array.from(event.path || event.composedPath());
     
     // Loop through the path

@@ -27414,20 +27414,3 @@ export const books = [
   },
 ];
 
-// Created a Set to store unique titles and remove duplicates
-const uniqueTitles = new Set();
-
-// Use filter to keep only the books with unique titles
-const uniqueBooks = books.filter((book) => {
-  // Check if the title is not in the Set
-  if (!uniqueTitles.has(book.title)) {
-    // If not, add it to the Set and return true to include this book in the result
-    uniqueTitles.add(book.title);
-    return true;
-  }
-  // If the title is already in the Set, return false to exclude this book from the result
-  return false;
-});
-
-/* duplicate - uniqueBooks contains the array of books with unique titles
-export const books = uniqueBooks;*/
