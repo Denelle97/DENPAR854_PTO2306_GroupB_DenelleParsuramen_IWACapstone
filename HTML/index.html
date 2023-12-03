@@ -40,12 +40,7 @@
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M52.88 57.62 4.126 37.897a3 3 0 0 0-2.25 
-              5.562L58.95 66.55a11.062 11.062 0 0 0 2.1.849l.154.062c.351.142.714.213 
-              1.071.22 5.35.912 10.682-2.253 12.34-7.577l14.27-45.83C90.694 8.473 87.456 
-              2.307 81.654.5c-5.8-1.806-11.966 1.432-13.773 7.233l-8.23 26.429L49.03 
-              4.479a5 5 0 1 0-9.415 3.37l14.04 39.23-31.087-31.085a4 4 0 1 0-5.657 
-              5.656l35.97 35.97Z"
+              d="M52.88 57.62 4.126 37.897a3 3 0 0 0-2.25 5.562L58.95 66.55a11.062 11.062 0 0 0 2.1.849l.154.062c.351.142.714.213 1.071.22 5.35.912 10.682-2.253 12.34-7.577l14.27-45.83C90.694 8.473 87.456 2.307 81.654.5c-5.8-1.806-11.966 1.432-13.773 7.233l-8.23 26.429L49.03 4.479a5 5 0 1 0-9.415 3.37l14.04 39.23-31.087-31.085a4 4 0 1 0-5.657 5.656l35.97 35.97Z"
             ></path>
           </svg>
 
@@ -93,7 +88,9 @@
           </button>
         </div>
       </div>
+
     </header>
+
 
     <main class="list">
       <div class="list__items" data-list-items></div>
@@ -115,6 +112,144 @@
       </div>
     </dialog>
 
+    <dialog class="overlay" data-search-overlay>
+      <div class="overlay__content">
+        <form class="overlay__form" data-search-form id="search">
+          <label class="overlay__field">
+            <div class="overlay__label">Title</div>
+            <input class="overlay__input" data-search-title name="title" placeholder="Any"></input>
+          </label>
+          
+
+          <label class="overlay__field">
+            <div class="overlay__label">Genre</div>
+            <select class="overlay__input overlay__input_select" data-search-genres name="genre">
+              <option value="All genres"> All genres</option>
+              <option value="Historical-Fiction"> Historical-Fiction</option>
+              <option value="Magic"> Magic</option>
+              <option value="Business">Business</option>
+              <option value="Economics"> Economics</option>
+              <option value="Non-fiction">Non-fiction</option>
+              <option value="Business">Business</option>
+              <option value="Latin-american">Latin-american</option>
+              <option value="School"> School</option>
+              <option value="Adult">Adult</option>
+              <option value="Psychology">Psychology</option>
+              <option value="Magical-realism">Magical-realism</option>
+              <option value="Essays">Essays</option>
+              <option value="Mythology"> Mythology</option>
+              <option value="Short-stories"> Short-stories</option>
+              <option value="Reference">Memoir</option>
+              <option value="Physics"> Physics</option>
+              <option value="Humor">Humor</option>
+              <option value="Young-adult">Young-adult</option>
+              <option value="Religion">Religion</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Paranormal">Paranormal</option>
+              <option value="France">France</option>
+              <option value="Animals">Animals</option>
+              <option value="20th-century">20th-century</option>
+              <option value="Poetry"> Poetry</option>
+              <option value="Thriller"> Thriller</option>
+              <option value="Russian-literature">Russian-literature</option>
+              <option value="History"> History</option>
+              <option value="Russia">Russia</option>
+              <option value="Novels">Novels</option>
+              <option value="Middle-grade">Middle-grade</option>
+              <option value="Travel">Travel</option>
+              <option value="Theatre">Theatre</option>
+              <option value="Science">Science</option>
+              <option value="Contemporary">Contemporary</option>
+              <option value="Gothic">Gothic</option>
+              <option value="Historical"> Historical</option>
+              <option value="Childrens">Childrens </option>
+              <option value="Classics">Classics</option>
+              <option value="American"> American</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Christian">Christian</option>
+            </select>
+          </label> 
+
+  <label class="overlay__field">
+   <div class="overlay__label">Author</div>
+    <select class="overlay__input overlay__input_select" data-search-authors name="author">
+      <option value="All Authors">All Author</option>
+      <option value="194e164b-9365-4358-b44a-f28a93cc528f">Steven D. Levitt</option>
+      <option value="76e8065c-fd7a-4a8b-a8ea-6105a47d0781">Stephen J. Dubner</option>
+      <option value="6b092ae7-283c-45db-80f1-f0cc7e0d4921">Bill Bryson</option>
+      <option value="6dfb0a04-7ea0-4b79-887c-db759515e113">Daniel Kahneman</option>
+      <option value="76749e00-8dee-4f53-892e-ae5f17374aa2">Randy Pausch</option>
+      <option value="5abb0ae3-e351-4388-9d39-256a1a889bfc">Jeffrey Zaslow</option>
+      <option value="510406cd-14a8-4ddc-bd44-03e2fb50a96c">Michael Lewis</option>
+      <option value="3b61c145-e08f-4867-a264-ad1de070adb1">Doris Kearns Goodwin</option>
+      <option value="a4f9948b-267b-4cf7-8c89-268278b672bb">Alan Weisman</option>
+      <option value="d0533241-7f5f-41dd-8a72-93096416bd87">Mark Kurlansky</option>
+      <option value="6ae84116-6bcc-4d21-b345-d2529d5675f1">Susan Cain</option>
+      <option value="8d85a4e1-547a-4613-a192-84fb976314ac">Anne Frank</option>
+      <option value="5a65eea5-590b-4a2b-89bf-73a5db89384e">Eleanor Roosevelt</option>
+      <option value="86b2fc20-4d40-4eec-9501-d511f9000424">Susan Massotty</option>
+      <option value="d0dbf97c-298d-4c3f-8448-52bd5fd20986">Henry David Thoreau</option>
+      <option value="701f8e7e-2007-4f51-bb04-260e965c51a9">Bill McKibben</option>
+      <option value="71e84f9c-57f6-4292-9bff-5ab23f4b4ba6">Lynne Truss</option>
+      <option value="3bd29cf2-63ce-42c8-b43b-ea74ea412124">Carl Sagan</option>
+      <option value="41ed9a23-20ed-45da-87cb-1b540d3c6cbf">Oliver Sacks</option>
+      <option value="Stephen King">Stephen King</option>
+      <option value="Stephen Hawking">Stephen Hawking</option>
+      <option value="Viktor E. Frankl">Viktor E. Frankl</option>
+      <option value="Harold S. Kushner">Harold S. Kushner</option>
+      <option value="William J. Winslade">William J. Winslade</option>
+      <option value="Eric Schlosser">Eric Schlosser</option>
+      <option value="Malcolm Gladwell">Malcolm Gladwell</option>
+      <option value="Barry Fox">Barry Fox</option>
+      <option value="Irina Henegar">Irina Henegar</option>
+      <option value="Orson Scott Card">Orson Scott Card</option>
+      <option value="S.E. Hinton">S.E. Hinton</option>
+      <option value="Frances Hodgson Burnett">Frances Hodgson Burnett</option>
+      <option value="George R.R. Martin">George R.R. Martin</option>
+      <option value="William Goldman">William Goldman</option>
+      <option value="Khaled Hosseini">Khaled Hosseini</option>
+      <option value="Ray Bradbury">Ray Bradbury</option>
+      <option value="Audrey Niffenegger">Audrey Niffenegger</option>
+      <option value="Gabriel García Márquez">Gabriel García Márquez</option>
+      <option value="Gregory Rabassa">Gregory Rabassa</option>
+      <option value="Aldous Huxley">Aldous Huxley</option>
+      <option value="J.D. Salinger">J.D. Salinger</option>
+      <option value="John Steinbeck">John Steinbeck</option>
+      <option value="Bram Stoker">Bram Stoker</option>
+      <option value="Rubén Toledo">Rubén Toledo</option>
+      <option value="Nina Auerbach">Nina Auerbach</option>
+      <option value="E.B. White">E.B. White</option>
+      <option value="Garth Williams">Garth Williams</option>
+      <option value="Rosemary Wells">Rosemary Wells</option>
+      <option value="William Shakespeare">William Shakespeare</option>
+      <option value="William Golding">William Golding</option>
+      <option value="Fyodor Dostoevsky">Fyodor Dostoevsky</option>
+      <option value="David McDuff">David McDuff</option>
+      <option value="Joseph Frank">Joseph Frank</option>
+      <option value="Rick Riordan">Rick Riordan</option>
+      <option value="Victor Hugo">Victor Hugo</option>
+      <option value="Norman MacAfee">Norman MacAfee</option>
+   </select>     
+
+        </form>
+
+        <div class="overlay__row">
+          <button class="overlay__button" data-search-cancel>Cancel</button>
+          <!-- <input type="text" id="search-input" placeholder="Search...">-->
+          <!--button class="overlay__button" data-search-cancel>Search-->
+          <button class="overlay__button"  data-searchable>Search</button>
+
+          </button>
+          <!-- <button class="overlay__button overlay__button_primary" type="submit" form="search">Search</button>>-->
+          <!--<form>
+          <input type="text" id="search-input" placeholder="Search...">
+          <button type="submit" id="search-button">Search</button>
+          </form> -->
+        </div>
+
+       </div>
+      </div>
+    </dialog>
 
     <dialog class="overlay" data-settings-overlay>
       <div class="overlay__content">
