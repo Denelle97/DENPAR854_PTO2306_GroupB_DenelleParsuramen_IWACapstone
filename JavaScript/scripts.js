@@ -1,10 +1,10 @@
 //Import data
 import { BOOKS_PER_PAGE, authors, genres, books } from "../JavaScript/data.js";
 
-// Create a document fragment
+/* Create a document fragment
 const fragment = document.createDocumentFragment();
 
-// Define color values for day and night themes
+/* Define color values for day and night themes
 const day = {
     dark: '10, 10, 20',
     light: '255, 255, 255',
@@ -13,9 +13,62 @@ const day = {
 const night = {
     dark: '255, 255, 255',
     light: '10, 10, 20',
-};
+};*/
 
-// Initialize page and matches
+const day = document.getElementById('Daydark');
+const body = document.querySelector('body');
+
+Theme.addEventListener('click', function() {
+  if (this.classList.contains('day')) {
+    this.classList.remove('Night'); // changes color to white 
+    this.classList.add('Day'); // changes color to black
+    body.style.background = 'White';
+    body.style.color = 'Black';
+    body.style.transition = '2s';
+  } else {
+    this.classList.remove('Day'); // changes color to black
+    this.classList.add('Night'); //  changes color to white 
+    body.style.background = 'Black';
+    body.style.color = 'White';
+    body.style.transition = '2s';
+  }
+}); 
+
+const loadBooks = (event) => {
+    event.preventDefault()
+    html.list.message.classList = 'list__message'
+    const extracted = books.slice(index, index + BOOKS_PER_PAGE);
+    const booksLeft = books.length - index
+    html.list.button.textContent = "Show More" + "(" + booksLeft + ")"
+    for (let i = index; i < index + BOOKS_PER_PAGE; i++) {
+        const book = books[i]
+        const image = book.image
+        const title = book.title
+        const authorId = book.author
+        const id = book.id
+        const element = document.createElement('button')
+        element.classList = 'preview'
+        element.setAttribute('id', id)
+        element.innerHTML = /* html */ `
+            <img class="preview__image"src="${image}"/>
+            <div class="preview__info" data-box>
+                <h3 class="preview__title">${title}</h3>
+                <div class="preview__author">${authors[authorId]}</div>
+            </div> `
+        fragment.appendChild(element)   
+    }
+    area.appendChild(fragment)
+    index += extracted.length;
+    if (index >= books.length) {
+        html.list.button.disabled = true;
+        html.list.button.classList.add('button--disabled');
+    }
+}
+html.list.button.addEventListener('click', loadBooks)
+window.addEventListener('load', loadBooks)
+
+
+/* Initialize page and matches
 let page = 1; 
 let matches = books;
 
@@ -32,7 +85,7 @@ if (!range || range.length < 2) {
  * @param {Object} book - The book object.
  * @returns {HTMLButtonElement} - The created preview element.
  */
-function createPreviewElement({ author, id, image, title }) {
+/*function createPreviewElement({ author, id, image, title }) {
     const preview = document.createElement('button');
     preview.classList = 'preview';
     preview.setAttribute('data-preview', id);
@@ -54,7 +107,7 @@ function createPreviewElement({ author, id, image, title }) {
  * @param {DocumentFragment} fragment - The target fragment.
  * @param {Object[]} books - Array of books to create previews for.
  */
-function appendPreviewsToFragment(fragment, books) {
+/*function appendPreviewsToFragment(fragment, books) {
     for (const book of books) {
         const preview = createPreviewElement(book);
         fragment.appendChild(preview);
@@ -177,26 +230,26 @@ data-search-form.addEventListener('click', (event) => {
         element.classList = 'preview';
         element.setAttribute('data-preview', id);
 
-        element.innerHTML = /* html */ `
-            <img class="preview__image" src="${image}" />
-            <div class="preview__info">
-                <h3 class="preview__title">${title}</h3>
-                <div class="preview__author">${authors[authorId]}</div>
-            </div>
-        `;
+    //     element.innerHTML = /* html */ `
+    //         <img class="preview__image" src="${image}" />
+    //         <div class="preview__info">
+    //             <h3 class="preview__title">${title}</h3>
+    //             <div class="preview__author">${authors[authorId]}</div>
+    //         </div>
+    //     `;
 
-        fragment.appendChild(element);
-    }
+    //     fragment.appendChild(element);
+    // }*
 
-    // Append the fragment to data-list-items
-    data-list-items.appendChild(fragment);
+    // // Append the fragment to data-list-items
+    // data-list-items.appendChild(fragment);
     
-    // Update initial, remaining, and button state
-    const initial = Math.max(matches.length - page * BOOKS_PER_PAGE, 0);
-    const remaining = hasRemaining ? initial : 0;
-    data-list-button.disabled = initial > 0;
+    // // Update initial, remaining, and button state
+    // const initial = Math.max(matches.length - page * BOOKS_PER_PAGE, 0);
+    // const remaining = hasRemaining ? initial : 0;
+    // data-list-button.disabled = initial > 0;
     
-    data-list-button.innerHTML = `<span>Show more</span><span class="list__remaining"> (${remaining})</span>`;
+    // data-list-button.innerHTML = `<span>Show more</span><span class="list__remaining"> (${remaining})</span>`;
 
     // Scroll to the top
     window.scrollTo({ top: 0, behavior: 'smooth' });

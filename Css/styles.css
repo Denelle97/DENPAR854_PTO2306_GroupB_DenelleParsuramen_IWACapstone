@@ -8,7 +8,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-dark:  255, 255, 255; 
+    --color-dark:  0, 150, 255; 
     --color-light: 10, 10, 20;
   }
 }
@@ -19,8 +19,8 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
-  min-width: 100%;
+  /*min-height: 100vh;
+  min-width: 100%;*/
   font-family: Roboto, sans-serif;
   color: rgba(var(--color-dark), 0.9);
   background: linear-gradient(0deg, rgba(var(--color-dark), 0.2), rgba(var(--color-dark), 0.1)), rgba(var(--color-light), 1);
@@ -101,11 +101,11 @@ option {
   background-color: rgba(var(--color-force-light), 0.1);
   transition: background-color 0.1s;
   border-width: 0;
-  border-radius: 6px;
+ /* border-radius: 6px;
   height: 2.5rem;
   width: 2.5rem;
   cursor: pointer;
-  margin-right: 0.25rem;
+  margin-right: 0.25rem;*/
 }
 
 .header__button:hover {
@@ -167,20 +167,14 @@ option {
 }
 
 .list__button {
-  font-family: Roboto, sans-serif;
-  transition: background-color 0.1s;
-  border-width: 0;
-  border-radius: 6px;
-  height: 2.75rem;
-  cursor: pointer;
-  width: 50%;
-  background-color: rgba(var(--color-blue), 1);
-  color: rgba(var(--color-force-light), 1);
-  font-size: 1rem;
-  border: 1px solid rgba(var(--color-blue), 1);
-  max-width: 10rem;
-  margin: 0 auto;
-  display: block;
+  padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
 }
 
 .list__remaining {
@@ -404,15 +398,15 @@ option {
   padding-top: 3rem;
 }
 
-.overlay__preview {
+/*.overlay__preview {
   overflow: hidden;
   margin: -1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+}*/
 
-.overlay__background {
+/*.overlay__background {
   background: rgba(var(--color-dark), 0.6);
   position: fixed;
   top: 0;
