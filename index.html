@@ -7,17 +7,17 @@
 
     <title>Book Connect</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../Meta/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../Meta/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../Meta/favicon-16x16.png">
-    <link rel="manifest" href="../Meta/manifest.json">
-    <link rel="mask-icon" href="../Meta/safari-pinned-tab.svg" color="#0096ff">
-    <link rel="shortcut icon" href="../Meta/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/meta/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/meta/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/meta/favicon-16x16.png">
+    <link rel="manifest" href="/meta/meta/manifest.json">
+    <link rel="mask-icon" href="/meta/meta/safari-pinned-tab.svg" color="#0096ff">
+    <link rel="shortcut icon" href="/meta/meta/favicon.ico">
     <meta name="msapplication-TileColor" content="#0a0a14">
-    <meta name="msapplication-config" content="../Meta/browserconfig.xml">
+    <meta name="msapplication-config" content="/meta/browserconfig.xml">
     <meta name="theme-color" content="#0a0a14">
 
-    <link rel="stylesheet" href="../Css/styles.css" />
+    <link rel="stylesheet" href="stylesheet.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -26,8 +26,8 @@
       rel="stylesheet"
     />
 
-    <script src="../JavaScript/scripts.js" defer type="module"></script>
-    <script src="../JavaScript/data.js" defer type="module"></script>
+    <script type="module" src="./script.js"></script>
+    <script type="module" src="./data.js"></script>
   </head>
   <body>
 
@@ -91,7 +91,6 @@
 
     </header>
 
-
     <main class="list">
       <div class="list__items" data-list-items></div>
       <div class="list__message" data-list-message>No results found. Your filters might be too narrow.</div>
@@ -111,6 +110,7 @@
         <button class="overlay__button overlay__button_primary" data-list-close>Close</button>
       </div>
     </dialog>
+
 
     <dialog class="overlay" data-search-overlay>
       <div class="overlay__content">
@@ -229,25 +229,30 @@
       <option value="Rick Riordan">Rick Riordan</option>
       <option value="Victor Hugo">Victor Hugo</option>
       <option value="Norman MacAfee">Norman MacAfee</option>
-   </select>     
+   </select>
+        
 
         </form>
 
         <div class="overlay__row">
           <button class="overlay__button" data-search-cancel>Cancel</button>
-          <!-- <input type="text" id="search-input" placeholder="Search...">-->
+         <!-- <input type="text" id="search-input" placeholder="Search...">-->
           <!--button class="overlay__button" data-search-cancel>Search-->
           <button class="overlay__button"  data-searchable>Search</button>
 
           </button>
-          <!-- <button class="overlay__button overlay__button_primary" type="submit" form="search">Search</button>>-->
-          <!--<form>
+         <!-- <button class="overlay__button overlay__button_primary" type="submit" form="search">Search</button>>-->
+       <!--<form>
           <input type="text" id="search-input" placeholder="Search...">
           <button type="submit" id="search-button">Search</button>
-          </form> -->
-        </div>
+        </form> -->
+      </div>
 
-       </div>
+      
+
+        
+
+        </div>
       </div>
     </dialog>
 

@@ -1,5 +1,3 @@
-//This needs to be imported to Scripts
-
 /**Constant representing the number of books per page */
 export const BOOKS_PER_PAGE = 36;
 
@@ -92,7 +90,7 @@ export const authors = {
   "39a23579-f473-44a1-b22f-58b5036d3e3b": "Jane Austen",
   "b9cd8a1d-0586-4cb2-9b1a-e3d9dce79faf": "Anna Quindlen",
   "37018341-31f4-4ffa-8755-a49979c218dd": "Suzanne Collins"
-};
+}
 
 /**an object mapping genre IDs to genre names */
 export const genres = {
@@ -164,7 +162,7 @@ export const genres = {
   "cdd102f6-b3ad-4e1a-acfb-eb247dfdb547": "Russia",
   "c40bbf55-c8ee-4fe3-a21f-ed16210afd95": "Russian-literature",
   "64c4197d-5f8e-4bff-b440-6d19bc591fd9": "Magic"
-};
+}
 
 /** An array of books with nested arrays containing the books' details */
 export const books = [
@@ -25455,5 +25453,7 @@ export const html = {
 
   }
   },
+
+  
 
 }
