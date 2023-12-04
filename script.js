@@ -13,7 +13,7 @@ let index = 0
  * Theme functionality:
  * Selecting elements for day/night theme
  */
-const day = document.getElementById('Daydark'); // Theme element for toggling between day and night themes
+const day = document.getElementById('Daydark'); 
 const body = document.querySelector('body');
 
 // Event listener for theme toggle button
@@ -178,12 +178,17 @@ html.search.cancel.addEventListener('click', handleSearchToggle)
  */
 const handleSettingsToggle = (event) => {
     event.preventDefault();
+
+    // Destructure properties for clarity
+    const { dialog } = html.settings;
+
     // Toggling the settings dialog's open attribute
-    if (html.settings.dialog.hasAttribute('open')) {
-        html.settings.dialog.removeAttribute('open');
+    if (dialog.hasAttribute('open')) {
+        dialog.removeAttribute('open');
     } else {
-        html.settings.dialog.setAttribute('open', true);
+        dialog.setAttribute('open', true);
     }
+
 };
 
 // Event listeners for settings button, cancel button, and save button
