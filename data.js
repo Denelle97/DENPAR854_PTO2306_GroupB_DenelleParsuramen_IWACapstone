@@ -25415,6 +25415,43 @@ export const books = [
   }
 ]
 
+/**
+ * HTML elements for convenient DOM manipulation.
+ *
+ * @typedef {Object} HTML
+ * @property {Object} settings - Elements related to settings.
+ * @property {HTMLButtonElement} settings.button - The button to open settings.
+ * @property {HTMLDivElement} settings.dialog - The overlay dialog for settings.
+ * @property {HTMLFormElement} settings.form - The form inside settings.
+ * @property {HTMLSelectElement} settings.theme - The theme select element in settings.
+ * @property {HTMLButtonElement} settings.cancel - The button to cancel settings.
+ * @property {HTMLButtonElement} settings.save - The button to save settings.
+ *
+ * @property {Object} search - Elements related to search.
+ * @property {HTMLButtonElement} search.button - The button to open search.
+ * @property {HTMLDivElement} search.dialog - The overlay dialog for search.
+ * @property {HTMLButtonElement} search.cancel - The button to cancel search.
+ * @property {HTMLFormElement} search.form - The form inside search.
+ * @property {HTMLInputElement} search.title - The input for search title.
+ * @property {HTMLSelectElement} search.genre - The select element for search genres.
+ * @property {HTMLSelectElement} search.author - The select element for search authors.
+ * @property {HTMLButtonElement} search.submit - The button to submit search.
+ *
+ * @property {Object} list - Elements related to the book list.
+ * @property {HTMLElement} list.items - The container for list items.
+ * @property {HTMLDivElement} list.message - The message element for list.
+ * @property {HTMLButtonElement} list.button - The button to load more books.
+ * @property {NodeListOf<HTMLButtonElement>} list.preview - The list of book preview buttons.
+ * @property {Object} list.overlay - Elements related to the book details overlay.
+ * @property {HTMLElement} list.overlay.active - The active overlay container.
+ * @property {HTMLImageElement} list.overlay.blur - The blur image in the overlay.
+ * @property {HTMLHeadingElement} list.overlay.title - The title in the overlay.
+ * @property {HTMLParagraphElement} list.overlay.subtitle - The subtitle in the overlay.
+ * @property {HTMLParagraphElement} list.overlay.description - The description in the overlay.
+ * @property {HTMLButtonElement} list.overlay.close - The button to close the overlay.
+ * @property {NodeListOf<HTMLImageElement>} list.overlay.image - The list of images in the overlay.
+ */
+
 export const html = {
   
   settings: {
@@ -25451,9 +25488,6 @@ export const html = {
       close: document.querySelector('[data-list-close]'),
       image: document.querySelectorAll('[data-list-image]')
 
-  }
+   }
   },
-
-  
-
-}
+};
