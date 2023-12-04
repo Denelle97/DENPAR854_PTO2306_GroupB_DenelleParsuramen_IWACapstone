@@ -13,7 +13,7 @@ let index = 0
  * Theme functionality:
  * Selecting elements for day/night theme
  */
-const day = document.getElementById('Daydark');
+const day = document.getElementById('Daydark'); // Theme element for toggling between day and night themes
 const body = document.querySelector('body');
 
 // Event listener for theme toggle button
@@ -144,12 +144,15 @@ document.addEventListener('click', (event) => {
 const handleSearchToggle = (event) => {
     event.preventDefault();
 
+    // Destructure properties for clarity
+    const { dialog } = html.search;
+
     // Toggling the search dialog's open attribute
-    if (html.search.dialog.hasAttribute('open')) {
-        html.search.dialog.removeAttribute('open');
-    } else {
-        html.search.dialog.setAttribute('open', true);
-    }
+    if (dialog.hasAttribute('open')) {
+      dialog.removeAttribute('open');
+  } else {
+      dialog.setAttribute('open', true);
+  }
 
 // TODO: Add event listeners to searchable buttons (to be implemented)
 const searchableButtons = document.querySelectorAll('[data-searchable]');
@@ -226,7 +229,8 @@ html.settings.save.addEventListener('click', handleSettingsSave)
 const createGenreOptionsHtml = (event) => {
     event.preventDefault();
     const fragment = document.createDocumentFragment();
-    const selectElement = document.getElementById("genre-select");
+    //const selectElement = document.getElementById("genre-select");
+    document.getElementById("genre-select");
 
 // Creating options for each genre and appending to the dropdown
 genres.forEach((genre) => {
