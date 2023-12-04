@@ -1,24 +1,33 @@
 // Importing data and elements from data.js
 import { BOOKS_PER_PAGE, authors, genres, books, html } from "./data.js";
 
-// Selecting elements for day/night theme
+
+
+// Creating a document fragment for efficient DOM manipulation
+const fragment = document.createDocumentFragment();
+const area = document.querySelector('[data-list-items]')
+let index = 0
+
+
+/**
+ * Theme functionality:
+ * Selecting elements for day/night theme
+ */
 const day = document.getElementById('Daydark');
 const body = document.querySelector('body');
 
 // Event listener for theme toggle button
 Theme.addEventListener('click', function() {
-  // Checking the current theme class and toggling to the opposite
+  // Toggle between day and night themes
   if (this.classList.contains('day')) {
-    // Day theme
-    // Remove night class and add day class
+    // Switch to day theme
     this.classList.remove('Night');  
     this.classList.add('Day'); 
     body.style.background = 'White';
     body.style.color = 'Black';
     body.style.transition = '2s';
   } else {
-    // Night theme
-    // Remove day class and add night class
+    // Switch to night theme
     this.classList.remove('Day'); 
     this.classList.add('Night'); 
     body.style.background = 'Black';
@@ -28,15 +37,22 @@ Theme.addEventListener('click', function() {
 }); 
 
 
-// Creating a document fragment for efficient DOM manipulation
-const fragment = document.createDocumentFragment();
-const area = document.querySelector('[data-list-items]')
-let index = 0
-
-// Setting initial button text for loading books
+/**
+ * Preview element functionality:
+ * Setting initial button text for loading books
+ *
+ * @type {Object}
+ * @property {HTMLButtonElement} button - The button element for loading books.
+ */
 html.list.button.textContent = "Show More" + "(" + books.length + ")"
 
-// Function to load and display books
+
+/**
+ * Loads and displays books on the page.
+ *
+ * @param {Event} event - The click event triggering the book loading.
+ * @returns {void}
+ */
 const loadBooks = (event) => {
     event.preventDefault();
     // Updating button text and extracting a slice of books
@@ -79,60 +95,84 @@ const loadBooks = (event) => {
 html.list.button.addEventListener('click', loadBooks)
 window.addEventListener('load', loadBooks);
 
+
+
 // Event listener for displaying book details on button click
 document.addEventListener('click', (event) => {
+    // Check if the overlay is already open
     if (html.list.overlay.active.hasAttribute('open')) {
+        // Close the overlay if it's already open
         html.list.overlay.active.removeAttribute('open')
     } else {
-      // Checking if a preview button is clicked
+        // Checking if a preview button is clicked
         const button = event.target.closest('.preview')
         if (button == null) {
-            return;
+            return; //Exit if not a preview button
         }
-        // Finding the corresponding book and displaying details
-        const book = books.find(book => book.id === button.id)
-        const year = new Date(book.published).getFullYear()
-        console.log(year)
-        const title = html.list.overlay.title
-        title.innerText = book.title
-        const image = book.image
-        const imageElement = document.querySelector('[data-list-image]')
-        imageElement.src = image
-        const blurElement = document.querySelector('[data-list-blur]')
-        blurElement.src=image
-        const description = html.list.overlay.description
-        description.innerText = book.description
-        const subtitle = html.list.overlay.subtitle
-        subtitle.innerText = `${authors[book.author]} (` + `${year})`
-        html.list.overlay.active.setAttribute('open', true)
-    }
-  })
 
-  // Function to handle search toggle
+
+        // Finding the corresponding book and displaying details
+        const book = books.find(book => book.id === button.id);
+        const year = new Date(book.published).getFullYear();
+        console.log(year);
+
+        // Update overlay with book details
+        const title = html.list.overlay.title;
+        title.innerText = book.title;
+        const image = book.image;
+        const imageElement = document.querySelector('[data-list-image]');
+        imageElement.src = image;
+        const blurElement = document.querySelector('[data-list-blur]');
+        blurElement.src=image;
+        const description = html.list.overlay.description;
+        description.innerText = book.description;
+        const subtitle = html.list.overlay.subtitle;
+        subtitle.innerText = `${authors[book.author]} (` + `${year})`;
+        // Open the overlay
+        html.list.overlay.active.setAttribute('open', true);
+    }
+  });
+
+
+ /**
+ * Search functionality:
+ * Function to handle search toggle
+ *
+ * @param {Event} event - The click event triggering the search toggle.
+ * @returns {void}
+ */
 const handleSearchToggle = (event) => {
     event.preventDefault();
+
     // Toggling the search dialog's open attribute
     if (html.search.dialog.hasAttribute('open')) {
-        html.search.dialog.removeAttribute('open')
+        html.search.dialog.removeAttribute('open');
     } else {
-        html.search.dialog.setAttribute('open', true)
+        html.search.dialog.setAttribute('open', true);
     }
 
-// Adding event listeners to searchable buttons (to be implemented)
+// TODO: Add event listeners to searchable buttons (to be implemented)
 const searchableButtons = document.querySelectorAll('[data-searchable]');
 
 searchableButtons.forEach(button => {
   button.addEventListener('click', () => {
-    // Do something when a searchable button is clicked
+      // TODO: Implement logic when a searchable button is clicked
+    });
   });
-});
 };
 
 // Event listeners for search button and cancel button
 html.search.button.addEventListener('click', handleSearchToggle)
 html.search.cancel.addEventListener('click', handleSearchToggle)
 
-// Function to handle settings toggle
+
+/**
+ * Settings functionality:
+ * Function to handle settings toggle
+ *
+ * @param {Event} event - The click event triggering the settings toggle.
+ * @returns {void}
+ */
 const handleSettingsToggle = (event) => {
     event.preventDefault();
     // Toggling the settings dialog's open attribute
@@ -147,7 +187,13 @@ const handleSettingsToggle = (event) => {
 html.settings.button.addEventListener('click', handleSettingsToggle)
 html.settings.cancel.addEventListener('click', handleSettingsToggle)
 
-// Function to handle saving settings
+
+/**
+ * Function to handle saving settings
+ *
+ * @param {Event} event - The click event triggering the settings save.
+ * @returns {void}
+ */
 const handleSettingsSave = (event) => {
     event.preventDefault();
     // Logging the selected theme value
@@ -156,10 +202,10 @@ const handleSettingsSave = (event) => {
     // Setting CSS variables based on the selected theme
     if (html.settings.theme.value == 'night') {
         document.documentElement.style.setProperty("--color-dark", "255, 255, 255");
-    document.documentElement.style.setProperty("--color-light", "10, 10, 20");
+        document.documentElement.style.setProperty("--color-light", "10, 10, 20");
     } else {
         document.documentElement.style.setProperty("--color-dark", "10, 10, 20");
-    document.documentElement.style.setProperty("--color-light", "255, 255, 255");
+        document.documentElement.style.setProperty("--color-light", "255, 255, 255");
     }
 
     // Closing the settings dialog
@@ -169,11 +215,18 @@ const handleSettingsSave = (event) => {
 // Event listener for settings save button
 html.settings.save.addEventListener('click', handleSettingsSave)
 
-// Function to create genre options in the search dropdown
+
+/**
+ * Creating genre & author filter functionality:
+ * Function to create genre options in the search dropdown
+ *
+ * @param {Event} event - The click event triggering the creation of genre options.
+ * @returns {void}
+ */
 const createGenreOptionsHtml = (event) => {
     event.preventDefault();
     const fragment = document.createDocumentFragment();
-const selectElement = document.getElementById("genre-select");
+    const selectElement = document.getElementById("genre-select");
 
 // Creating options for each genre and appending to the dropdown
 genres.forEach((genre) => {
@@ -187,7 +240,13 @@ genres.forEach((genre) => {
 // Event listener for creating genre options in the search dropdown
 html.search.button.addEventListener('click', createGenreOptionsHtml);
 
-// Function to create author options in the search dropdown
+
+/**
+ * Function to create author options in the search dropdown
+ *
+ * @param {Event} event - The click event triggering the creation of author options.
+ * @returns {void}
+ */
 const createAuthorOptionsHtml = (event) => {
     event.preventDefault();
     const fragment = document.createDocumentFragment();
@@ -208,7 +267,15 @@ const createAuthorOptionsHtml = (event) => {
 // Event listener for creating author options in the search dropdown
 html.search.author.addEventListener('click', createAuthorOptionsHtml)
 
-// Function to handle search submission and filtering books
+
+
+/**
+ * Search submission & result handling functionality:
+ * Function to handle search submission and filtering books
+ *
+ * @param {Event} event - The click event triggering the search submission.
+ * @returns {void}
+ */
 const handleSearchSubmit = (event) => {
     event.preventDefault();
     // Creating a search object with title, author, and genre
@@ -253,7 +320,13 @@ const handleSearchSubmit = (event) => {
 // Event listener for search submit button
 html.search.submit.addEventListener('click', handleSearchSubmit)
 
-// Function to handle search results display
+
+/**
+ * Function to handle search results display
+ *
+ * @param {Array} found - The array of books found in the search.
+ * @returns {void}
+ */
 const handleSearchResults = (found) => {
     // Checking if results are undefined, hiding the search dialog
     if (typeof found === 'undefined') {

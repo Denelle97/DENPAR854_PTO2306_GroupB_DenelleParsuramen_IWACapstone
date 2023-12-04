@@ -8,7 +8,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-dark:var(--color-blue)
+    --color-dark:  255, 255, 255; 
     --color-light: 10, 10, 20;
   }
 }
@@ -19,6 +19,8 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+  min-width: 100%;
   font-family: Roboto, sans-serif;
   color: rgba(var(--color-dark), 0.9);
   background: linear-gradient(0deg, rgba(var(--color-dark), 0.2), rgba(var(--color-dark), 0.1)), rgba(var(--color-light), 1);
@@ -27,6 +29,15 @@ body {
 option {
   background-color: rgba(var(--color-light), 1);
   color: rgba(var(--color-dark), 0.8);
+}
+
+@keyframes enter {
+  from {
+    transform: translateY(10rem);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 /* header */
@@ -41,6 +52,7 @@ option {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width:100%;
   max-width: 70rem;
   padding: 0 1rem;
   margin: 0 auto;
@@ -88,6 +100,11 @@ option {
   background-color: rgba(var(--color-force-light), 0.1);
   transition: background-color 0.1s;
   border-width: 0;
+  border-radius: 6px;
+  height: 2.5rem;
+  width: 2.5rem;
+  cursor: pointer;
+  margin-right: 0.25rem;
 }
  
 
@@ -110,6 +127,7 @@ option {
   .list__message_show {
     display: block;
   }
+
   .list__items {
     display: grid;
     padding: 2rem 1rem;
@@ -119,6 +137,7 @@ option {
     margin: 0 auto;
     width: 100%;
   }
+
   @media (min-width: 50rem) {
     .list__items {
       grid-template-columns: repeat(2, 1fr);
@@ -140,6 +159,23 @@ option {
       grid-column-gap: 0.75rem;
       grid-row-gap: 0.75rem;
     }
+  }
+
+  .list__button {
+    font-family: Roboto, sans-serif;
+    transition: background-color 0.1s;
+    border-width: 0;
+    border-radius: 6px;
+    height: 3.5rem;
+    cursor: pointer;
+    width: 75%;
+    background-color: rgba(var(--color-blue), 1);
+    color: rgba(var(--color-force-light), 1);
+    font-size: 0.5rem;
+    border: 1px solid rgba(var(--color-blue), 1);
+    max-width: 10rem;
+    margin: 0 auto;
+    display: block;
   }
   
   .list {
