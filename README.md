@@ -3,6 +3,49 @@
 #link to slide show#
 https://docs.google.com/presentation/d/1hViTJmifTqEOAaQn5keMLx9BnlSs1xqd3P6JPIXFjv0/edit#slide=id.p
 
+#Book Connect App Instructions#
+Welcome to the Book Connect App! This application allows you to explore and discover new books based on your preferences. Here's a guide to help you make the most of the app's features:
+
+#Viewing Book Previews#
+1.Book List:
+-The main screen displays a list of book previews, showing the title, author, and cover image.
+
+2.Loading More Books:
+-Click the "Show More" button to load additional book previews.
+
+3.Preview Details:
+-Click on a book preview to view details, including a summary, publication date, and additional information.
+
+#Searching for Books#
+1.Search Bar:
+-Utilize the search bar to find books based on specific text phrases. Enter keywords related to the title, author, or genre.
+
+2.Filter by Author:
+-Use the author dropdown menu to filter books by your favorite authors.
+
+3.Filter by Genre:
+-Explore books by filtering them based on different genres using the genre dropdown menu.
+
+#Reading Preferences#
+1.Dark/Light Mode:
+-Toggle between dark and light modes using the theme button to enhance your reading experience, especially during nighttime.
+
+#Additional Tips#
+1.Book Details:
+-Click on a book preview to reveal additional details such as a summary, publication date, and more.
+
+2.Settings:
+-Access the settings menu by clicking the magnifying glass icon or the user Icon. Here, you can customize your experience, including theme selection.
+
+3.Responsive Design:
+-The app is designed to work seamlessly on various devices, so feel free to explore on your computer, tablet, or mobile phone.
+
+4.Enjoy Exploring:
+-Discover new books, find your favorite authors, and enjoy the world of literature through this user-friendly app.
+
+
+Below was submitted with first submission. 
+
 The original code had several issues and did not align with the initial challenge brief and user expectations. 
 
 1.Undefined Elements:
